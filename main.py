@@ -1,17 +1,13 @@
-import random
 import time
 
-from utils.storage import Json
 from utils.stats import total_files, total_lines, total_chars
-from auth.auth import Login
+from auth.auth import Login, CONFIG, SESSIONS
+from utils.generate import generate_session
 
 from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
-
-CONFIG = Json('config.json')
-SESSIONS = Json('data/sessions.json')
 
 
 def get_userid_from_cookie():
@@ -20,19 +16,10 @@ def get_userid_from_cookie():
         if cookie is not None and cookie in SESSIONS:
             session = SESSIONS[cookie]
             if time.time() > session['last_updated'] + CONFIG['cookieTimeout']:
-                del SESSIONS[cookie]
+                SESSIONS.deletekey(cookie)
             else:
                 return session['id']
     return None
-
-def generate_session(id):
-    return generate_cookie(), {
-        'id': id,
-        'generated-at': time.time()
-    }
-
-def generate_cookie(l=512, m=64):
-    return '%030x' % random.randrange(16**(random.randint(64, l)))
 
 
 @app.route('/login')

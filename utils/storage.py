@@ -26,11 +26,13 @@ class Json(dict):
     
     def save(self):
         with open(self.path, 'r') as f:
-            json.dump(self, f)
+            json.dump(self, f, indent=4)
 
     def __setitem__(self, k, v):
         super().__setitem__(k, v)
         self.save()
     
-
+    def deletekey(self, k):
+        del self[k]
+        self.save()
     

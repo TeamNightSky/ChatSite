@@ -2,11 +2,11 @@ import hashlib
 import secrets
 from utils.storage import Json
 from flask import Request
-import time
+
 
 PASSWORDS = Json("data/passwords.json")
 CONFIG = Json("config.json")
-
+SESSIONS = Json("data/sessions.json")
 
 class Login:
     def __init__(self, user_id):
@@ -23,7 +23,6 @@ class Login:
         r = self._rand
         return hashlib.sha256((self.hash + r).encode("utf-8")).hexdigest(), r
 
-sessions = []
 
 def auth_endpoint(request: Request):
     json = request.get_json()
@@ -32,10 +31,10 @@ def auth_endpoint(request: Request):
     except KeyError:
         return {"success": False, "error": "User id was not found."}
 
-    time.sleep(0.01)
+    ...
 
 
     login = Login(user_id)
-    sessions.append(login)
+    SESSIONS.append(login) # It's not a constant, plus they are login sessions, and will only last for mi
     return {"rand": login.active_rand, "success": True}
 

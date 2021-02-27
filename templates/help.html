@@ -14,15 +14,15 @@
     <body>
         <div class="all-content w-clearfix">
             <header class="main-column header">
-                <h1 class="logo">ChatSite</h1>
+                <h1 class="logo">{{ config['title'] }}</h1>
                 <div class="big-tagline w-hidden-small w-hidden-tiny">
                     Chat.<br/>
                     Post.<br/>
                     Connect.
                 </div>
                 <div class="info-wrapper">
-                    <div class="tagline">&lt;Description&gt;</div>
-                    <div class="byline">By &lt;Owner&gt;</div>
+                    <div class="tagline">{{ config['description'] }}</div>
+                    <div class="byline">By {{ config['author'] }}</div>
                 </div>
                 <div class="footer-wrapper w-clearfix">
                     <a href="/" class="footer-nav-link w-inline-block">

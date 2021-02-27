@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>ChatSite - Home</title>
+        <title>{{ config['title'] }} - Home</title>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Webflow" name="generator" />
         <link href="{{ url_for('static', filename='css/home.css') }}" rel="stylesheet"
@@ -20,15 +20,15 @@
     <body>
         <div class="all-content w-clearfix">
             <header class="main-column header">
-                <h1 class="logo">ChatSite</h1>
+                <h1 class="logo">{{ config['title'] }}</h1>
                 <div class="big-tagline w-hidden-small w-hidden-tiny">
                     Chat.<br/>
                     Post.<br/>
                     Connect.
                 </div>
                 <div class="info-wrapper">
-                    <div class="tagline">&lt;Description&gt;</div>
-                    <div class="byline">By &lt;Owner&gt;</div>
+                    <div class="tagline">{{ config['description'] }}</div>
+                    <div class="byline">By {{ config['author'] }}</div>
                 </div>
                 <div class="footer-wrapper w-clearfix">
                     <a href="/" aria-current="page" class="footer-nav-link w-inline-block w--current">

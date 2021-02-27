@@ -10,7 +10,27 @@ posts = Json('data/posts.json')
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
+
+
+@app.route('/explore')
+def explore():
+    pass
+
+
+@app.route('/faq')
+def faq():
+    pass
+
+
+@app.route('/post')
+def post():
+    pass
+
+
+@app.route('/posts')
+def posts():
+    pass
 
 
 if __name__ == '__main__':

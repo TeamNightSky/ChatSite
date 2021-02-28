@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 # Dev
-*.json
+data/
 .replit
 
 # Distribution / packaging

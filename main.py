@@ -9,6 +9,7 @@ from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
+
 def get_userid_from_cookie():
     if CONFIG['userCookie'] in request.cookies:
         cookie = request.cookies.get(CONFIG['userCookie'])
@@ -18,6 +19,7 @@ def get_userid_from_cookie():
                 SESSIONS.deletekey(cookie)
             else:
                 return session['id']
+
 
 def set_userid_to_cookie(id):
     cookie, session = generate_session(id)
@@ -37,9 +39,11 @@ def home():
 def login():
     return render_template('login.html', config=CONFIG)
 
+
 @app.route('/register')
 def register():
     return render_template('register.html', config=CONFIG)
+
 
 @app.route('/messages')
 def messages():

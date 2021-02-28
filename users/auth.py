@@ -3,7 +3,6 @@ import secrets
 from utils.storage import CONFIG, PASSWORDS
 
 
-
 class Login:
     def __init__(self, user_id):
         self.user_id = user_id
@@ -14,8 +13,6 @@ class Login:
     def _rand(self):
         return secrets.token_hex(CONFIG["auth-rand-length"])
 
-
     def generate_hash(self):
         r = self._rand
         return hashlib.sha256((self.hash + r).encode("utf-8")).hexdigest(), r
-

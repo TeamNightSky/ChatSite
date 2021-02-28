@@ -36,3 +36,6 @@ class Json(dict):
         del self[k]
         self.save()
     
+CONFIG = Json('config.json')
+SESSIONS = Json('data/sessions.json')
+PASSWORDS = Json("data/passwords.json")  # Wouldn't we need to update these, or at least have them from one reference, so that way they don't overwrite each other?

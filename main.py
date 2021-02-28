@@ -1,14 +1,13 @@
 import time
-
+import importlib
 from utils.stats import total_files, total_lines, total_chars
-from auth.auth import Login, CONFIG, SESSIONS
-from utils.generate import generate_session
+from auth.auth import Login
+from utils.storage import CONFIG, SESSIONS
 
 from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
-
 
 def get_userid_from_cookie():
     if CONFIG['userCookie'] in request.cookies:
@@ -53,14 +52,21 @@ def posts():
 
 
 
-"""API""" # I think this should work
-API_ROUTES = {"/v1/auth": "auth.auth auth_endpoint"}
+"""API"""
+API_ROUTES = {
+    "/v1/auth": [
+        "auth.auth", 
+        "auth_endpoint"
+    ]
+}
 
-for route, path in API_ROUTES.items():
-    module = __import__(path.split(" ")[0])
-    @app.route(route)
+for route, item in API_ROUTES.items():
+    path, endpoint = item
+    module = importlib.import_module(path)
+
+    @app.route('/api' + route)
     def api(*a, **kw):
-        return getattr(module, path.split(" ")[-1])(request, *a, **kw)
+        return getattr(module, endpoint)(request, *a, **kw)
 
 
 if __name__ == '__main__':

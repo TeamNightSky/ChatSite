@@ -1,14 +1,13 @@
 import time
 
 from utils.stats import total_files, total_lines, total_chars
-from auth.auth import Login, CONFIG, SESSIONS
+from utils.storage import CONFIG, SESSIONS
 from utils.generate import generate_session
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 
 app = Flask(__name__)
-
 
 def get_userid_from_cookie():
     if CONFIG['userCookie'] in request.cookies:
@@ -19,17 +18,32 @@ def get_userid_from_cookie():
                 SESSIONS.deletekey(cookie)
             else:
                 return session['id']
-    return None
 
-
-@app.route('/login')
-def login():
-    return 'Login Page'
+def set_userid_to_cookie(id):
+    cookie, session = generate_session(id)
+    SESSIONS[cookie] = session
+    return session
 
 
 @app.route('/')
 def home():
+    userid = get_userid_from_cookie()
+    if userid is None:
+        return redirect('/login')
     return render_template('index.html', config=CONFIG)
+
+
+@app.route('/login')
+def login():
+    return render_template('login.html', config=CONFIG)
+
+@app.route('/register')
+def register():
+    return render_template('register.html', config=CONFIG)
+
+@app.route('/messages')
+def messages():
+    return render_template('messages.html', config=CONFIG)
 
 
 @app.route('/explore')
@@ -52,15 +66,9 @@ def posts():
     return render_template('allposts.html', config=CONFIG)
 
 
-
-"""API""" # I think this should work
-API_ROUTES = {"/v1/auth": "auth.auth auth_endpoint"}
-
-for route, path in API_ROUTES.items():
-    module = __import__(path.split(" ")[0])
-    @app.route(route)
-    def api(*a, **kw):
-        return getattr(module, path.split(" ")[-1])(request, *a, **kw)
+@app.route('/api/v1/auth')
+def authorize():
+    pass
 
 
 if __name__ == '__main__':

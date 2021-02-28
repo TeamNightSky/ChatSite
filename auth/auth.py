@@ -1,6 +1,6 @@
 import hashlib
 import secrets
-from utils.storage import CONFIG, PASSWORD
+from utils.storage import CONFIG, PASSWORDS
 from flask import Request
 from utils.generate import generate_session
 

@@ -2,6 +2,7 @@ import time
 
 from utils.stats import total_files, total_lines, total_chars
 from utils.storage import CONFIG, SESSIONS
+from utils.generate import generate_session
 
 from flask import Flask, render_template, request, redirect
 
@@ -17,6 +18,11 @@ def get_userid_from_cookie():
                 SESSIONS.deletekey(cookie)
             else:
                 return session['id']
+
+def set_userid_to_cookie(id):
+    cookie, session = generate_session(id)
+    SESSIONS[cookie] = session
+    return session
 
 
 @app.route('/')

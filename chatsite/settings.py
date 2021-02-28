@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,14 +26,18 @@ SECRET_KEY = 'cbrdaz&i)wksc43zhu34*3wo(dim%)!thpe$)&+ufxzr4y&lgo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'a1db0170-f8be-46b9-b844-3c618586f051.id.repl.co',
+    'chatsite.grandmoff100.repl.co'
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'chatsite.apps.app',
     'chatsite.apps.login',
+    'chatsite.apps.chat',
+    'chatsite.apps.main',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,7 +61,7 @@ ROOT_URLCONF = 'chatsite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,3 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(os.getcwd(), 'static')
+]

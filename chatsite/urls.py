@@ -16,7 +16,17 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from .apps.login.views import login_page, register_page
+from .apps.chat.views import messages_page, explore_page, post_page, help_page
+from .apps.main.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', index),
+    path('messages', messages_page),
+    path('login', login_page),
+    path('register', register_page),
+    path('explore', explore_page),
+    path('faq', help_page),
+    path('post', post_page),
 ]

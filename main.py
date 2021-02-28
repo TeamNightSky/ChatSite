@@ -1,8 +1,9 @@
 import time
+
 from utils.stats import total_files, total_lines, total_chars
 from utils.storage import CONFIG, SESSIONS
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 
 app = Flask(__name__)
@@ -18,14 +19,18 @@ def get_userid_from_cookie():
                 return session['id']
 
 
-@app.route('/login')
-def login():
-    return 'Login Page'
-
-
 @app.route('/')
 def home():
+    userid = get_userid_from_cookie()
+    if userid is None:
+        return redirect('/login')
     return render_template('index.html', config=CONFIG)
+
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 
 
 @app.route('/explore')
@@ -46,6 +51,11 @@ def post():
 @app.route('/posts')
 def posts():
     return render_template('allposts.html', config=CONFIG)
+
+
+@app.route('/api/v1/auth')
+def authorize():
+    pass
 
 
 if __name__ == '__main__':

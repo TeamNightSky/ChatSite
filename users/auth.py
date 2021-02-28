@@ -1,8 +1,6 @@
 import hashlib
 import secrets
 from utils.storage import CONFIG, PASSWORDS
-from flask import Request
-from utils.generate import generate_session
 
 
 
@@ -20,3 +18,4 @@ class Login:
     def generate_hash(self):
         r = self._rand
         return hashlib.sha256((self.hash + r).encode("utf-8")).hexdigest(), r
+

@@ -8,6 +8,7 @@ __pycache__/
 
 # Dev
 *.json
+.replit
 
 # Distribution / packaging
 .Python

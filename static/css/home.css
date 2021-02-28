@@ -1,4 +1,4 @@
-/* Generated on: Sat Feb 27 2021 19:51:35 GMT+0000 (Coordinated Universal Time) */
+/* Generated on: Sun Feb 28 2021 02:25:04 GMT+0000 (Coordinated Universal Time) */
 /* ==========================================================================
    normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css 
    ========================================================================== */
@@ -113,10 +113,16 @@ p {
   top: 0px;
   right: 0px;
   bottom: 0px;
+  display: inline-block;
+  background-image: url("https://uploads-ssl.webflow.com/60399cc8875cc7757f2105e4/60399cc8875cc74ed1210608_waterfall.jpg");
+  background-position: 0px 0px;
+  background-size: cover;
 }
 
 .logo {
   display: inline-block;
+  width: 99.99993046722489%;
+  max-width: 600px;
   margin-top: 0px;
   margin-bottom: 31px;
   padding: 21px;
@@ -187,14 +193,12 @@ p {
 }
 
 .main-column.header {
+  width: 50%;
   max-width: 600px;
   padding-top: 164px;
   padding-right: 15px;
   padding-left: 15px;
-  background-image: url("https://uploads-ssl.webflow.com/60399cc8875cc7757f2105e4/60399cc8875cc74ed1210608_waterfall.jpg");
-  background-position: 91% 50%;
-  background-size: cover;
-  box-shadow: inset -3px 0 0 0 rgba(0, 0, 0, 0.28);
+  border-right: 0px dotted transparent;
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.64);
@@ -203,6 +207,7 @@ p {
 .main-column.content {
   overflow: scroll;
   max-width: 800px;
+  float: right;
   background-color: #fff;
   box-shadow: inset -1px 0 0 0 rgba(0, 0, 0, 0.12);
   font-family: Roboto, sans-serif;
@@ -733,9 +738,109 @@ p {
   padding-left: 10px;
 }
 
+.div-block {
+  position: relative;
+}
+
+.login-column {
+  position: relative;
+  width: 40%;
+  height: 85%;
+  max-width: 600px;
+  margin-top: 5%;
+  margin-left: 5%;
+  padding-top: 6%;
+  float: left;
+  border-radius: 20px;
+  background-color: transparent;
+  color: #fff;
+}
+
+.heading {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.login-form {
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.username-field {
+  margin-bottom: 30px;
+  border-radius: 25px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.password-field {
+  margin-bottom: 90px;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.submit-button {
+  width: 100%;
+  margin-left: 0px;
+  border-radius: 25px;
+  background-color: #159d00;
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.field-label {
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.field-label-2 {
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 1280px) {
+  .login-column {
+    background-color: transparent;
+  }
+
+  .heading {
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  .submit-button {
+    text-transform: uppercase;
+  }
+
+  .field-label {
+    text-transform: uppercase;
+  }
+
+  .field-label-2 {
+    text-transform: uppercase;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .login-column {
+    margin-right: 5%;
+    margin-left: 10%;
+    float: right;
+  }
+}
+
 @media screen and (min-width: 1920px) {
   .all-content {
     position: fixed;
+    background-image: url("https://uploads-ssl.webflow.com/60399cc8875cc7757f2105e4/60399cc8875cc74ed1210608_waterfall.jpg");
+    background-size: 100% 100%;
+    background-clip: border-box;
   }
 
   .pagination-nav {
@@ -746,6 +851,12 @@ p {
   .navbar-2 {
     position: relative;
     bottom: auto;
+  }
+
+  .login-column {
+    max-width: 800px;
+    margin-right: 15%;
+    float: right;
   }
 }
 
@@ -781,18 +892,28 @@ p {
 }
 
 @media screen and (max-width: 767px) {
+  .tagline {
+    margin-top: 15px;
+  }
+
   .all-content {
     position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 700px;
     padding-bottom: 59px;
+    float: left;
   }
 
   .logo {
     display: inline-block;
+    width: 300px;
     margin-top: 0px;
     margin-right: 14px;
     margin-bottom: 0px;
     padding: 13px 14px;
     float: left;
+    clear: none;
     border-width: 5px;
     font-size: 42px;
     line-height: 30px;
@@ -817,10 +938,12 @@ p {
 
   .main-column.header {
     position: static;
+    width: 100%;
+    height: auto;
     max-width: 1000px;
     padding-top: 37px;
-    padding-bottom: 42px;
-    text-align: left;
+    padding-bottom: 20px;
+    text-align: center;
   }
 
   .nav-menu {
@@ -951,6 +1074,23 @@ p {
   .menu-wrapper.w--open {
     background-color: #000;
   }
+
+  .login-column {
+    width: 70%;
+    height: auto;
+    margin-left: 15%;
+    background-color: transparent;
+    text-align: center;
+  }
+
+  .heading {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 479px) {
@@ -965,7 +1105,7 @@ p {
   }
 
   .main-column.header {
-    padding-bottom: 41px;
+    padding-bottom: 20px;
   }
 
   .nav-link.w--current {
@@ -1014,5 +1154,15 @@ p {
   .footer-link {
     display: block;
     margin-bottom: 17px;
+  }
+
+  .login-column {
+    margin-top: 0%;
+    padding-top: 0%;
+  }
+
+  .heading {
+    margin-top: 0px;
+    text-align: center;
   }
 }

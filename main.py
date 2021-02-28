@@ -29,8 +29,15 @@ def home():
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    return render_template('login.html', config=CONFIG)
 
+@app.route('/register')
+def register():
+    return render_template('register.html', config=CONFIG)
+
+@app.route('/messages')
+def messages():
+    return render_template('messages.html', config=CONFIG)
 
 
 @app.route('/explore')

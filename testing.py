@@ -1,8 +1,10 @@
-from utils.stats import find_files
+import os
 import subprocess
 
 
-for file in find_files('templates'):
+for file in os.listdir('templates'):
+    file = os.path.join('templates', file)
+    print(file)
     BOOL = 0
     STRINGS = []
     with open(file, 'r') as f:
@@ -16,13 +18,17 @@ for file in find_files('templates'):
             if BOOL:
                 if char != '"':
                     string += char
-
+    with open(file, 'r') as f:
         strings = [string for string in STRINGS if string.startswith('http') and "uploads-ssl" in string]
-        temp = "{{ url_for('static', filename='img/%s'"
-        file = f.read()
+        print(strings)
+        read = f.read()
+        temp = "{{ url_for('static', filename='imgs/%s') }}"
         for string in strings:
             name = string.split('_')[-1]
-            file = file.replace(string, temp % name)
-            subprocess.Popen(['wget', '-O', 'static/imgs/' + name, string]).wait()
-
+            proc = subprocess.Popen(['wget', '-O', 'static/imgs/' + name, string])
+            print(name)
+            proc.wait()
+            read = read.replace(string, temp % name)
     
+    with open(file, 'w') as f:
+        f.write(read)

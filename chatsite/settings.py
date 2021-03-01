@@ -126,6 +126,8 @@ USE_TZ = True
 
 STATIC_URL = '/chatsite/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'production-static')
+
 STATICFILES_DIRS = [
     os.path.join(os.getcwd(), 'chatsite/static')
 ]

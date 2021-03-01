@@ -25,5 +25,5 @@ jobs:
         pip install flake8==3.8.0
     - name: Run Flake8
       run: |
-        cd lib/python
+        ls
         flake8 --count --statistics --show-source --jobs=$(nproc) .

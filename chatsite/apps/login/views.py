@@ -7,5 +7,4 @@ def login_page(request):
 
 
 def register_page(request):
-        return render(request, 'register.html', {'config': CONFIG})
-
+    return render(request, 'register.html', {'config': CONFIG})

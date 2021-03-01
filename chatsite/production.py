@@ -24,11 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'cbrdaz&i)wksc43zhu34*3wo(dim%)!thpe$)&+ufxzr4y&lgo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'a1db0170-f8be-46b9-b844-3c618586f051.id.repl.co',
-    'chatsite.grandmoff100.repl.co'
+    'chatsite.grandmoff100.repl.co',
+    'dwyvern.herokuapp.com'
 ]
 
 
@@ -126,6 +127,6 @@ USE_TZ = True
 
 STATIC_URL = '/chatsite/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(os.getcwd(), 'chatsite/static')
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'production-static')
+
+STATICFILES_DIRS = [os.path.join(os.getcwd(), 'chatsite/static')]

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from utils.storage import CONFIG
+from chatsite.utils.storage import CONFIG
 
 
 def messages_page(request):

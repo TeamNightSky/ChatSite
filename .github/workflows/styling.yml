@@ -4,7 +4,11 @@ on:
   push:
     branches:
       - master
+      - dev
+
   pull_request:
+    branches:
+      - master
 
 env:
   # Make sure pip caches dependencies and installs as user

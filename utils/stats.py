@@ -8,7 +8,7 @@ def find_files(directory=os.getcwd()):
             try:
                 open(path, encoding='UTF-8').read()
                 yield path
-            except IOError:
+            except (IOError, UnicodeDecodeError):
                 pass
         elif os.path.isdir(path):
             yield from find_files(path)

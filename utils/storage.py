@@ -1,3 +1,4 @@
+ 
 import json
 import os
 
@@ -38,5 +39,3 @@ class Json(dict):
 
 
 CONFIG = Json('config.json')
-SESSIONS = Json('data/sessions.json')
-PASSWORDS = Json("data/passwords.json")

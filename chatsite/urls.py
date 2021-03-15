@@ -26,7 +26,7 @@ urlpatterns = [
     path('api/v1/login/rand', login_api_rand),
     path('api/v1/login/verify', login_api_verify),
     path('api/v1/captcha/init', captcha_api_init),
-    path('api/v1/captcha/varify', captcha_api_verify),
+    path('api/v1/captcha/verify', captcha_api_verify),
     path('api/v1/register/id', register_api_id_gen),
     path('api/v1/register', register_api)
 ]

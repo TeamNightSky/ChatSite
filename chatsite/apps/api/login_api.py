@@ -23,11 +23,11 @@ def login_api_rand(request):
         return HttpResponse("user-id value was not included")
 
     try:
-        login = LoginSession.objects.get(user_id=data["user_id"])
+        login = LoginSession.objects.get(user_id=data["user-id"])
         rand = login.rand
     except LoginSession.DoesNotExist:
         try:
-            user = User.objects.get(user_id=data["user_id"])
+            user = User.objects.get(user_id=data["user-id"])
         except User.DoesNotExist:
             return HttpResponse("Invalid user id")
 
@@ -103,14 +103,14 @@ def captcha_api_init(request):
     if "reg-id" not in data:
         return HttpResponse("user-id value was not included")
 
-    if len(CaptchaSession.filter(reg_id=data["reg-id"])) != 0:
+    if len(CaptchaSession.objects.filter(reg_id=data["reg-id"])) != 0:
         return JsonResponse(
-            {"sentence": CaptchaSession.get(reg_id=data["reg-id"]).sentence}
+            {"sentence": CaptchaSession.objects.get(reg_id=data["reg-id"]).sentence}
         )
     else:
         sentence, index = generate_sentence()
         session = CaptchaSession(
-            user_id=data["reg-id"],
+            reg_id=data["reg-id"],
             sentence=sentence,
             index=index,
             verified=False
@@ -136,7 +136,7 @@ def captcha_api_verify(request):
         return HttpResponse("result value was not included")
 
     try:
-        session = CaptchaSession.get(reg_id=data["reg-id"])
+        session = CaptchaSession.objects.get(reg_id=data["reg-id"])
     except CaptchaSession.DoesNotExist:
         return HttpResponse("Invalid reg id")
 
@@ -177,12 +177,9 @@ def register_api(request):
         return HttpResponse("pw-hash value was not included")
 
     try:
-        captcha = CaptchaSession.get(reg_id=data["reg-id"])
+        captcha = CaptchaSession.objects.get(reg_id=data["reg-id"])
     except CaptchaSession.DoesNotExist:
         return HttpResponse("Invalid reg-id")
 
     if not captcha.verified:
         return HttpResponse("Captcha not verified")
-
-
-

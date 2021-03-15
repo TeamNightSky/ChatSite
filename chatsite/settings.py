@@ -61,6 +61,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'chatsite.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

@@ -23,13 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'cbrdaz&i)wksc43zhu34*3wo(dim%)!thpe$)&+ufxzr4y&lgo'
 
+SECURE_SSL_REDIRECT = True
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'a1db0170-f8be-46b9-b844-3c618586f051.id.repl.co',
-    'chatsite.grandmoff100.repl.co',
-    'dwyvern.herokuapp.com'
+    '*'
 ]
 
 

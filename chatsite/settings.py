@@ -23,12 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'cbrdaz&i)wksc43zhu34*3wo(dim%)!thpe$)&+ufxzr4y&lgo'
 
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'a1db0170-f8be-46b9-b844-3c618586f051.id.repl.co',
-    'chatsite.grandmoff100.repl.co'
+    '*'
 ]
 
 
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     'chatsite.apps.login',
     'chatsite.apps.chat',
     'chatsite.apps.main',
+    'chatsite.models',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

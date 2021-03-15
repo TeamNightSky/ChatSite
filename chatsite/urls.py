@@ -1,22 +1,16 @@
-"""chatsite URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-
 from django.contrib import admin
 from django.urls import path
+
 from .apps.login.views import login_page, register_page
+from .apps.login.api import (
+    login_api_rand,
+    login_api_verify,
+    captcha_api_init,
+    captcha_api_verify,
+    register_api,
+    register_api_id_gen
+)
+
 from .apps.chat.views import messages_page, explore_page, post_page, help_page
 from .apps.main.views import index
 
@@ -29,4 +23,10 @@ urlpatterns = [
     path('explore', explore_page),
     path('faq', help_page),
     path('post', post_page),
+    path('api/v1/login/rand', login_api_rand),
+    path('api/v1/login/verify', login_api_verify),
+    path('api/v1/captcha/init', captcha_api_init),
+    path('api/v1/captcha/varify', captcha_api_verify),
+    path('api/v1/register/id', register_api_id_gen),
+    path('api/v1/register', register_api)
 ]
